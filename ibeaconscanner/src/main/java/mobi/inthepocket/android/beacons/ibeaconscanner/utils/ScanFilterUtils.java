@@ -33,7 +33,9 @@ public final class ScanFilterUtils
         // the manufacturer data byte is the filter!
         final byte[] manufacturerData = new byte[]
         {
-                0,0,
+
+                // identify as iBeacon
+                (byte)0x02,(byte)0x15,
 
                 // uuid
                 0,0,0,0,
@@ -53,19 +55,20 @@ public final class ScanFilterUtils
         // the mask tells what bytes in the filter need to match, 1 if it has to match, 0 if not
         final byte[] manufacturerDataMask = new byte[]
         {
-                0,0,
+                // Type and length
+                (byte)0xFF,(byte)0xFF,
 
                 // uuid
-                1,1,1,1,
-                1,1,
-                1,1,
-                1,1,1,1,1,1,1,1,
+                (byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+                (byte)0xFF,(byte)0xFF,
+                (byte)0xFF,(byte)0xFF,
+                (byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
 
                 // major
-                1,1,
+                (byte)0xFF,(byte)0xFF,
 
                 // minor
-                1,1,
+                (byte)0xFF,(byte)0xFF,
 
                 0
         };
